@@ -1,0 +1,1 @@
+package org.eclipse.om2m.SmartSecurity.get;
