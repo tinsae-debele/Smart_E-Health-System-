@@ -1,22 +1,4 @@
-/*******************************************************************************
- * Copyright (c) 2013-2020 LAAS-CNRS (www.laas.fr)
- * 7 Colonel Roche 31077 Toulouse - France
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
- * which accompanies this distribution, and is available at
- * https://www.eclipse.org/legal/epl-2.0/
- *
- * Initial Contributors:
- *     Thierry Monteil : Project manager, technical co-manager
- *     Mahdi Ben Alaya : Technical co-manager
- *     Samir Medjiah : Technical co-manager
- *     Khalil Drira : Strategy expert
- *     Guillaume Garzone : Developer
- *     François Aïssaoui : Developer
- *
- * New contributors :
- *******************************************************************************/
+
 package org.eclipse.om2m.smartehealth.main;
 
 import org.eclipse.om2m.commons.exceptions.BadRequestException;
@@ -26,14 +8,10 @@ import org.eclipse.om2m.commons.exceptions.BadRequestException;
  */
 public enum Operations {
 	
-	GET_STATE("getState"),
-	GET_STATE_DIRECT("getStateDirect"),
-	SET_ON("setOn"),
-	SET_OFF("setOff"),
-	TOGGLE("toggle"),
-	ALL_ON("allOn"),
-	ALL_OFF("allOff"),
-	ALL_TOGGLE("allToggle");
+	GET_STATE("getData"),
+	SET_DATA("setDATA"),
+	UPDATE_DATA("updateData"),
+	DELETE_DATA("delateData");
 	private final String value;
 	
 	private Operations(final String value){

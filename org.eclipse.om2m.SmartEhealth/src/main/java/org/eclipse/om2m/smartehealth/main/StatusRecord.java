@@ -1,22 +1,4 @@
-/*******************************************************************************
- * Copyright (c) 2013-2020 LAAS-CNRS (www.laas.fr)
- * 7 Colonel Roche 31077 Toulouse - France
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
- * which accompanies this distribution, and is available at
- * https://www.eclipse.org/legal/epl-2.0/
- *
- * Initial Contributors:
- *     Thierry Monteil : Project manager, technical co-manager
- *     Mahdi Ben Alaya : Technical co-manager
- *     Samir Medjiah : Technical co-manager
- *     Khalil Drira : Strategy expert
- *     Guillaume Garzone : Developer
- *     François Aïssaoui : Developer
- *
- * New contributors :
- *******************************************************************************/
+
 package org.eclipse.om2m.smartehealth.main;
 
 public class StatusRecord {
@@ -47,15 +29,15 @@ public class StatusRecord {
     
   
     private boolean state = false;
-    /** Lamp ID */
-    private String lampId;
+    /** app ID */
+    private String appID;
    
     public StatusRecord() {
     	
     }
-    public StatusRecord(String lampId, String HCN, String loc, String prOrder, String pName , String phName)
+    public StatusRecord(String appID, String HCN, String loc, String prOrder, String pName , String phName)
     {
-    	this.lampId = lampId;
+    	this.appID = appID;
     	this.healthCardNumber = HCN;
     	this.setLocation(loc) ;
     	this.setPatientName(pName);
@@ -90,17 +72,17 @@ public class StatusRecord {
 	}
 
 	/**
-	 * @return the lampId
+	 * @return the appID
 	 */
-	public String getLampId() {
-		return lampId;
+	public String getappID() {
+		return appID;
 	}
 
 	/**
-	 * @param lampId the lampId to set
+	 * @param appID the appID to set
 	 */
-	public void setLampId(String lampId) {
-		this.lampId = lampId;
+	public void setappID(String appID) {
+		this.appID = appID;
 	}
 
 
