@@ -1,21 +1,20 @@
 package org.eclipse.om2m.SmartSecurity.controller;
 
 import org.eclipse.om2m.SmartSecurity.model.AccessControl;
-import org.eclipse.om2m.SmartSecurity.get.AccessUI;
+
 
 public class AccessController {
 	private AccessControl model;
-	private AccessUI view;
+	//private AccessUI view;
 	
 	String [] Title = {"technical support","Patient","Nurse","Doctor"};
 	String [] Objects = {"PatientPersonalInfo","PatientMedicalInfo","StaffInfo"};
 	String [] Access = {"0211","0112","2111"};
 	String [] Actions = {"seek","get","modify"};
 	LinkedList [] locations = new LinkedList[3];
-
-	public AccessController(AccessControl model,AccessUI view) {
+ 	public AccessController(AccessControl model) {
 		this.model = model;
-		this.view = view;
+		//this.view = view;
 		
 		for(int i = 0; i < locations.length;i++) {
 			locations[i] = new LinkedList(Objects[i],Title,Access[i]);

@@ -17,7 +17,7 @@ public class SmartController {
 	public static void setPatient(String appID, String randIdNum,String namePatient, String loc , String treatType, String preOrder, String phName , String addrs , String ref){
 		// Set the value in the "real world" model
 			// Send the information to the CSE
-		String targetID = SmartConstants.CSE_PREFIX + "/" + appID + "/" + SmartConstants.DATA;
+		String targetID = SmartConstants.CSE_PREFIX + "/" + appID + "/" + SmartConstants.DATA ;
 		ContentInstance cin = new ContentInstance();
 		//encryption 
 		EncryptAndDecrypt decEnc = new EncryptAndDecrypt();
@@ -34,6 +34,26 @@ public class SmartController {
 		cin.setContentInfo(MimeMediaType.OBIX + ":" + MimeMediaType.ENCOD_PLAIN);
 		RequestSender.createContentInstance(targetID, cin);
 	}
+	
+	public static void addUserInfo(String appID,String firstName, String lastName , String UserName , String role , String userData ){
+		// Set the value in the "real world" mode
+			// Send the information to the CSE
+		String targetID = SmartConstants.CSE_PREFIX + "/" + appID + "/" + SmartConstants.ACP;
+		ContentInstance cin = new ContentInstance();
+		//encryption 
+		EncryptAndDecrypt decEnc = new EncryptAndDecrypt();
+		//namePatient = decEnc.encrypt(namePatient);
+		//loc = decEnc.encrypt(loc);
+		//treatType = decEnc.encrypt(treatType);
+		//preOrder = decEnc.encrypt(preOrder);
+		//phName = decEnc.encrypt(phName);
+		//addrs = decEnc.encrypt(addrs);
+		 userData = decEnc.encrypt(userData);
+		cin.setContent(ObixUtil.getAccessControlRep(firstName, lastName ,UserName, role , userData));
+		cin.setName(UserName);
+		cin.setContentInfo(MimeMediaType.OBIX + ":" + MimeMediaType.ENCOD_PLAIN);
+		RequestSender.createContentInstance(targetID, cin);
+	}
 
 	
 	public static ResponsePrimitive getData(String appID, String randNum) {
@@ -41,9 +61,17 @@ public class SmartController {
 		String targetId = SmartConstants.CSE_PREFIX + "/" + appID + "/" + SmartConstants.DATA +"/" + str;
 		return RequestSender.getRequest(targetId);
 	}
+	public static ResponsePrimitive getUser(String appID, String randNum) {
+		String str = randNum;
+		String targetId = SmartConstants.CSE_PREFIX + "/" + appID + "/" + SmartConstants.ACP +"/" + str;
+		return RequestSender.getRequest(targetId);
+	}
 	
 	public static void addData(String randIdNum,String namePatient, String loc , String treatType, String preOrder, String phName, String addrs , String ref ){
-		setPatient(SmartConstants.AE_NAME, randIdNum,namePatient, loc , treatType, preOrder, phName , addrs , ref );
+		setPatient(SmartConstants.AE_NAME,randIdNum,namePatient, loc , treatType, preOrder, phName , addrs , ref );
+	}
+	public static void addUser(String firstName, String lastName , String UserName, String role , String userPwdDATA) {
+		addUserInfo(SmartConstants.AE_NAME,firstName, lastName ,UserName, role , userPwdDATA);
 	}
 
 	

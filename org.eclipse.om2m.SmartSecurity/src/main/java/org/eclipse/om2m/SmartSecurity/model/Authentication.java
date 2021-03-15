@@ -25,37 +25,31 @@ public class Authentication {
 		return role;
 	}
 	
-	public String[] getUserDetails(String Username) {
+	public String[] getUserDetails(String Username, String Files) {
 		String line = "";
 		String[] details = new String[5];
-		try {
-			//Retrieves the users details based of the username
-			BufferedReader reader = new BufferedReader(new FileReader("details.txt"));
-			line = reader.readLine();
-			while(line != null) {
-				details = line.split(":");
-				if(details[0].equals(Username)) {
-					reader.close();
-					return details;
-				}
-				line = reader.readLine();
-			}
-			reader.close();
-		}catch(IOException e) {e.printStackTrace();}
-	
+		//Retrieves the users details based of the username
+		//BufferedReader reader = new BufferedReader(new FileReader("details.txt"));
+		line = Files;
+		
+		System.out.println(Files);
+		while(line != null) {
+			details = line.split(":");
+			return details;
+		}
+		//reader.close();
+		System.out.println(details);
 		return null;
 	}	
 	
-	public void addInfo(String Username,String password,String role, String contactinfo,String address,String healthCardNumber,String medicaliinfo) {
+	public String addInfo(String Username,String password,String role, String contactinfo,String address,String healthCardNumber) {
 			
 			this.username = Username;
 			this.role = role;
 			SecureRandom rand = new SecureRandom();
 			byte[] salt = new byte[64];
 			byte [] Password;
-			BufferedWriter br = null;
-			FileWriter fr = null;
-			String Out;
+			String Out = "";
 			try {
 				// Making the salt and putting it in the hash alogrithm SHA-256 Salt is 64 bytes
 				MessageDigest hashAlg = MessageDigest.getInstance("SHA-256");
@@ -63,17 +57,12 @@ public class Authentication {
 				hashAlg.update(salt);
 				Password = hashAlg.digest(password.getBytes());
 				//making a string of the user details to upload to the txt file, format is item:item:item
-				Out = Username + ":" + Arrays.toString(Password) + ":" + Arrays.toString(salt) + ":" + role+ ":" + contactinfo+ ":" + address+ ":" + healthCardNumber+ ":" + medicaliinfo;
+				Out = Username + ":" + Arrays.toString(Password) + ":" + Arrays.toString(salt) + ":" + role+ ":" + contactinfo+ ":" + address+ ":" + healthCardNumber;
 				//Writing to the passwd.txt file
-				fr = new FileWriter("details.txt",true);
-				br = new BufferedWriter(fr);
-				br.write(Out);
-				br.newLine();
-				br.close();
-				fr.close();
 			} 
 			catch (Exception e1) {
 			}
+			return Out;
 		}
 	
 	public boolean checkUsername(String username) {
@@ -98,8 +87,8 @@ public class Authentication {
 		return true;
 	}
 	
-	public String [] getPasswordandSalt(String name) {
-		String [] info = this.getUserDetails(name);
+	public String [] getPasswordandSalt(String name , String userDetail) {
+		String [] info = this.getUserDetails(name , userDetail);
 		String [] values = new String [2];
 		values[0] = info[1];
 		values[1] = info[2];
@@ -109,9 +98,9 @@ public class Authentication {
 		}
 
 	
-	public String setUserNameandRole(String username) {
+	public String setUserNameandRole(String username , String userDetail) {
 		this.username = username;
-		String [] details = this.getUserDetails(username);
+		String [] details = this.getUserDetails(username , userDetail);
 		this.role = details[3];
 		return this.role;
 	}

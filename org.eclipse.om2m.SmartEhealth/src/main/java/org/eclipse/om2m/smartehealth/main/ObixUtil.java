@@ -95,5 +95,14 @@ public class ObixUtil {
 		
 	}
 	
+	public static String getAccessControlRep(String firstName, String lastName , String UserName, String role, String salt) {
+		Obj obj = new Obj();
+		obj.add(new Str("Username",UserName));
+		obj.add(new Str("Name", firstName + " " + lastName));
+		obj.add(new Str("Role",role));	
+		obj.add(new Str("User Data", salt));
+		return ObixEncoder.toString(obj);
+	}
+	
 	
 }

@@ -81,9 +81,13 @@ public class SmartCycleManager {
 			// Create DESCRIPTOR container sub-resource
 			container.setName(SmartConstants.DESC);
 			LOGGER.info(RequestSender.createContainer(response.getLocation(), container));
-			// Create STATE container sub-resource
+			// Create DETA container sub-resource
 			container.setName(SmartConstants.DATA);
 			LOGGER.info(RequestSender.createContainer(response.getLocation(), container));
+			// Create APC container Sub-resource 
+			container.setName(SmartConstants.ACP);
+			LOGGER.info(RequestSender.createContainer(response.getLocation(), container));
+			
 
 			String content;
 			// Create DESCRIPTION contentInstance on the DESCRIPTOR container resource
@@ -99,7 +103,7 @@ public class SmartCycleManager {
 			
 			content = ObixUtil.getStateRep(appId, initValue);
 			contentInstance.setContent(content);
-			RequestSender.createContentInstance(SmartConstants.CSE_PREFIX + "/" + appId + "/" + SmartConstants.DATA, contentInstance);
+			//RequestSender.createContentInstance(SmartConstants.CSE_PREFIX + "/" + appId + "/" + SmartConstants.DATA, contentInstance);
 		}
 		
 		

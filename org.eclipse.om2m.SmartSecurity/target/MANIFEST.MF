@@ -1,9 +1,10 @@
 Manifest-Version: 1.0
 Automatic-Module-Name: org.eclipse.om2m.SmartSecurity
 Bundle-SymbolicName: org.eclipse.om2m.SmartSecurity
-Export-Package: org.eclipse.om2m.SmartSecurity.controller
+Export-Package: org.eclipse.om2m.SmartSecurity.controller,org.eclipse.
+ om2m.SmartSecurity.model
 Bundle-Name: SmartSecurity
-Bundle-Version: 1.1.0.20210309-1623
+Bundle-Version: 1.1.0.20210315-2056
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

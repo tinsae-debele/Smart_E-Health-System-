@@ -47,7 +47,7 @@ public class DashBoard extends JFrame {
 		setBackground(new Color(0, 128, 128));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 502, 603);
-		setUndecorated(true);
+		//setUndecorated(true);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 139, 139));
 		//contentPane.setBorder(new LineBorder(new Color(0,0, 128) , 2));

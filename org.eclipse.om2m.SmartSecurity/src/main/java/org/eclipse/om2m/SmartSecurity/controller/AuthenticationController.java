@@ -16,12 +16,12 @@ public class AuthenticationController {
 		return auth.checkUsername(username);
 	}
 	public void startup() {}
-	public boolean checkPassword(String name,String password) {
+	public boolean checkPassword(String name,String password , String userDATA) {
 		MessageDigest hashAlg;
 		try {
 			//getting the User details to take out the salt to encrypt and the password to verify.
 			Authentication Auth = new Authentication();
-			String []originalPass = Auth.getPasswordandSalt(name);
+			String []originalPass = Auth.getPasswordandSalt(name , userDATA);
 			byte [] salt = new byte[64];
 			byte [] Password = new byte[32];
 			String [] temp = (originalPass[1].substring(1, originalPass[1].length()-1)).split(",");
@@ -41,9 +41,10 @@ public class AuthenticationController {
 		return false;
 	}
 
-
+    /*
 	public String setUserNameandRole(String username) {
 		return auth.setUserNameandRole(username);	
 	}
+	*/
 
 }

@@ -11,6 +11,7 @@ public class SmartConstants {
 	public static final String DATA = "DATA";
 	public static final String DESC = "DESCRIPTOR";
 	public static final String AE_NAME = "SMART_E-HEALTH";
+	public static final String ACP = "ACCESSCONTROL";
 	
 	public static String CSE_ID = "/" + Constants.CSE_ID;
 	public static String CSE_PREFIX = CSE_ID + "/" + Constants.CSE_NAME;

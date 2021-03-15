@@ -8,6 +8,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import org.eclipse.om2m.SmartSecurity.controller.AuthenticationController;
+import org.eclipse.om2m.SmartSecurity.controller.EncryptAndDecrypt;
+import org.eclipse.om2m.smartehealth.main.DataParser;
+import org.eclipse.om2m.smartehealth.main.SmartConstants;
+import org.eclipse.om2m.smartehealth.main.SmartController;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
@@ -17,6 +24,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
@@ -26,7 +34,7 @@ public class loginFrame extends JFrame {
 	private JTextField txtUsername;
 	private JPasswordField txtPassword;
 	private JLabel lblloginmsg = new JLabel("");
-
+	private HashMap<String, String> values;
 	/**
 	 * Launch the application.
 	 */
@@ -124,8 +132,15 @@ public class loginFrame extends JFrame {
 		JPanel pnlBtnLogin = new JPanel();
 		pnlBtnLogin.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(txtUsername.getText().equals("admin") && txtPassword.getText().equals("admin")) {
+			public void mouseClicked(MouseEvent e) {	
+				String userName = txtUsername.getText();
+				String xmlString = SmartController.getUser(SmartConstants.AE_NAME,userName).getContent().toString();
+				System.out.println(xmlString);
+				DataParser data = new DataParser();
+				values = data.parseData(xmlString);
+				AuthenticationController auth = new AuthenticationController();
+				
+				if(auth.checkPassword(txtUsername.getText(), txtPassword.getText(), EncryptAndDecrypt.decrypt(values.get("User Data")))) {
 					DashBoard dashBoard = new DashBoard();
 					dashBoard.setVisible(true);
 					loginFrame.this.dispose();
@@ -154,6 +169,7 @@ public class loginFrame extends JFrame {
 		lblx.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				if(JOptionPane.showConfirmDialog(null, "Are you sure you want to close this applicaiton", "Confirmation", JOptionPane.YES_NO_OPTION) == 0)
 				{
 					loginFrame.this.dispose();
@@ -189,6 +205,26 @@ public class loginFrame extends JFrame {
 		lblloginmsg.setFont(new Font("Dialog", Font.BOLD, 13));
 		lblloginmsg.setBounds(119, 224, 333, 15);
 		contentPane.add(lblloginmsg);
+		
+		JPanel pnlBtnSignUp = new JPanel();
+		pnlBtnSignUp.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SignUpFrame signUpForm = new SignUpFrame();
+				signUpForm.setVisible(true);
+				loginFrame.this.dispose();
+			}
+		});
+		pnlBtnSignUp.setLayout(null);
+		pnlBtnSignUp.setBackground(Color.GRAY);
+		pnlBtnSignUp.setBounds(162, 303, 250, 40);
+		contentPane.add(pnlBtnSignUp);
+		
+		JLabel lblSignUp = new JLabel("SIGN UP");
+		lblSignUp.setForeground(new Color(224, 255, 255));
+		lblSignUp.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblSignUp.setBounds(102, 12, 136, 16);
+		pnlBtnSignUp.add(lblSignUp);
 		setLocationRelativeTo(null);
 		
 		

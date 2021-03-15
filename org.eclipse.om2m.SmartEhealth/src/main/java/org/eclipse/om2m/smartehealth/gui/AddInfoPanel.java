@@ -138,7 +138,9 @@ public class AddInfoPanel extends JPanel {
 				SmartController.addData(hcard,namePatient,birthOfDate, treatType, preOrder, phyName,address, docRef );
 				
 			}
+			
 		});
+		
 		btnNewButton.setBounds(182, 352, 117, 25);
 		add(btnNewButton);
 		

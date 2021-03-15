@@ -5,4 +5,5 @@ Bundle-SymbolicName: org.eclipse.om2m.SmartSecurity
 Bundle-Version: 1.1.0.qualifier
 Automatic-Module-Name: org.eclipse.om2m.SmartSecurity
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.eclipse.om2m.SmartSecurity.controller
+Export-Package: org.eclipse.om2m.SmartSecurity.controller,
+ org.eclipse.om2m.SmartSecurity.model
