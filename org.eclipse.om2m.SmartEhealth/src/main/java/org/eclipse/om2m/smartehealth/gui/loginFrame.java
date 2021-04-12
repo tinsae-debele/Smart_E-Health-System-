@@ -24,6 +24,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.security.AccessController;
 import java.util.HashMap;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -141,9 +142,26 @@ public class loginFrame extends JFrame {
 				AuthenticationController auth = new AuthenticationController();
 				
 				if(auth.checkPassword(txtUsername.getText(), txtPassword.getText(), EncryptAndDecrypt.decrypt(values.get("User Data")))) {
-					DashBoard dashBoard = new DashBoard();
-					dashBoard.setVisible(true);
-					loginFrame.this.dispose();
+					
+				
+					String value = auth.setUserNameandRole(txtUsername.getText(), EncryptAndDecrypt.decrypt(values.get("User Data")));
+					DashBoard DOCdashBoard = new DashBoard();
+					phDashBoard phDash = new phDashBoard();
+			    	if (value.equals("Doctor")){
+			    		DOCdashBoard.setVisible(true);
+			    		loginFrame.this.dispose();
+			    	}else if(value.equals("Front Dask")) {
+			    		DOCdashBoard.setVisible(true);
+			    		loginFrame.this.dispose();
+			    	}else if(value.equals("Pharmacist")) {
+			    		phDash.setVisible(true);
+			    		loginFrame.this.dispose();
+			    	}else if(value.equals("Nurce")) {
+			    		DOCdashBoard.setVisible(true);
+			    		loginFrame.this.dispose();
+			    	}
+					
+					
 				}
 				else if(txtUsername.getText().equals("") || txtUsername.getText().equals("Username") || txtPassword.getText().equals("") ||
 						txtPassword.getText().equals("") || txtPassword.getText().equals("Password")) {

@@ -11,9 +11,9 @@ public class AuthenticationController {
 	
 	private Authentication auth = new Authentication();
 
-	public boolean checkUser(String username){
+	public boolean checkUser(String username, String userDeatil){
 		
-		return auth.checkUsername(username);
+		return auth.checkUsername(username , userDeatil);
 	}
 	public void startup() {}
 	public boolean checkPassword(String name,String password , String userDATA) {
@@ -41,10 +41,9 @@ public class AuthenticationController {
 		return false;
 	}
 
-    /*
-	public String setUserNameandRole(String username) {
-		return auth.setUserNameandRole(username);	
+    public String setUserNameandRole(String username , String userDetail) {
+		return auth.setUserNameandRole(username , userDetail);	
 	}
-	*/
+	
 
 }

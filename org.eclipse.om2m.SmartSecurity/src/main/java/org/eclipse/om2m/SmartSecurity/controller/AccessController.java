@@ -12,8 +12,8 @@ public class AccessController {
 	String [] Access = {"0211","0112","2111"};
 	String [] Actions = {"seek","get","modify"};
 	LinkedList [] locations = new LinkedList[3];
- 	public AccessController(AccessControl model) {
-		this.model = model;
+ 	public AccessController() {
+
 		//this.view = view;
 		
 		for(int i = 0; i < locations.length;i++) {

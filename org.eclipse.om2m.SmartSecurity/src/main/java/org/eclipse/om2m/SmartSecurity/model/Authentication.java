@@ -32,13 +32,13 @@ public class Authentication {
 		//BufferedReader reader = new BufferedReader(new FileReader("details.txt"));
 		line = Files;
 		
-		System.out.println(Files);
+		//System.out.println(Files);
 		while(line != null) {
 			details = line.split(":");
 			return details;
 		}
 		//reader.close();
-		System.out.println(details);
+		//System.out.println(details);
 		return null;
 	}	
 	
@@ -56,7 +56,7 @@ public class Authentication {
 				rand.nextBytes(salt);
 				hashAlg.update(salt);
 				Password = hashAlg.digest(password.getBytes());
-				//making a string of the user details to upload to the txt file, format is item:item:item
+				//making a string of the user details to upload to the server password and authintcaiton files, format is item:item:item
 				Out = Username + ":" + Arrays.toString(Password) + ":" + Arrays.toString(salt) + ":" + role+ ":" + contactinfo+ ":" + address+ ":" + healthCardNumber;
 				//Writing to the passwd.txt file
 			} 
@@ -65,24 +65,17 @@ public class Authentication {
 			return Out;
 		}
 	
-	public boolean checkUsername(String username) {
+	public boolean checkUsername(String username ,String datafile) {
 		
 		String line = "";
 		String details;
-		try {
-			//getting the username of each user from the file one by one
-			BufferedReader reader = new BufferedReader(new FileReader("details.txt"));
-			line = reader.readLine();
-			while(line != null) {
-				details = line.split(":")[0].replace(" ", "");
-				if(details.toLowerCase().equals(username.toLowerCase())) {
-					reader.close();
-					return false;
-				}
-				line = reader.readLine();
+		while(line != null) {
+			details = line.split(":")[0].replace(" ", "");
+			if(details.toLowerCase().equals(username.toLowerCase())) {
+				return false;
 			}
-			reader.close();
-		}catch(IOException e) {e.printStackTrace();}
+			
+		}
 		
 		return true;
 	}
