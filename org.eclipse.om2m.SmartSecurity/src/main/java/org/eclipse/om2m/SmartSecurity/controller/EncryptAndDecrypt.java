@@ -1,13 +1,21 @@
 package org.eclipse.om2m.SmartSecurity.controller;
 import java.io.UnsupportedEncodingException;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+
+/**
+ * 
+ * @author tinsae
+ * thie class is responsible for encrypting and decrypt 
+ *
+ */
  
-public class EncryptAndDecrypt {
+public class EncryptAndDecrypt {         
  
     private static SecretKeySpec secretKey;
     private static byte[] key;
@@ -30,13 +38,17 @@ public class EncryptAndDecrypt {
             e.printStackTrace();
         }
     }
- 
-    public static String encrypt(String strToEncrypt) 
+ /**
+  * Encrypt the sensative inforamtion before send to the server 
+  * @param strToEncrypt
+  * @return
+  */
+    public static String encrypt(String strToEncrypt)    
     {
         try
         { 
         	setKey();
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             return Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.getBytes("UTF-8")));
         } 
@@ -46,13 +58,18 @@ public class EncryptAndDecrypt {
         }
         return null;
     }
+    /**
+     * decrypt the message after it reciever from the server
+     * @param strToDecrypt
+     * @return the decrpted sensative inforamtions 
+     */
  
     public static String decrypt(String strToDecrypt) 
     {
         try
         {
         	setKey(); 
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
             return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
         } 

@@ -13,6 +13,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
+
+/**
+ * 
+ * @author tinsae , Kamran , Mohammed , Yohannes
+ * this class is responsible for add patient information
+ */
 public class AddInfoPanel extends JPanel {
 	private JTextField txtFristName;
 	private JTextField txtLastName;

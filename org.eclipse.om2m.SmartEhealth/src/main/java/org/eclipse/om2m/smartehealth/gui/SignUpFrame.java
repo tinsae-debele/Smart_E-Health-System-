@@ -53,7 +53,7 @@ public class SignUpFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public SignUpFrame() {
-		String [] roleList = {"Doctor" , "Front Dask" , "Nurce", "Pharmacist"};
+		String [] roleList = {"Doctor" , "Front Dask" , "Nurce", "Pharmacist" , "radiology"};
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 498, 438);
 		contentPane = new JPanel();

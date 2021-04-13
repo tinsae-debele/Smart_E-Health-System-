@@ -18,11 +18,15 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.SwingConstants;
 
+/**
+ * 
+ * @author tinsae , Kamran , Mohammed , Yohannes
+ *
+ */
 public class DashBoard extends JFrame {
 
 	private JPanel contentPane;
 	private AddInfoPanel addinfoPanal;
-	private editInfoPanel editinfoPan;
 	private GetInfoPanel getInfoPanel;
 	/**
 	 * Launch the application.
@@ -54,9 +58,6 @@ public class DashBoard extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		addinfoPanal = new AddInfoPanel();
-		
-		editinfoPan = new editInfoPanel();
-		
 		getInfoPanel = new GetInfoPanel();
 		
 		
@@ -95,24 +96,7 @@ public class DashBoard extends JFrame {
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Century Schoolbook L", Font.BOLD, 15));
 		addPnl.add(lblNewLabel_1);
-		
-		JPanel edietPnl = new JPanel();
-		edietPnl.addMouseListener(new PanelButtonMouseAdapter(edietPnl){
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				menuClicked(editinfoPan);
-			}
-		});
-		edietPnl.setBackground(new Color(0, 100, 0));
-		edietPnl.setBounds(250, 26, 120, 30);
-		//panel_1.setBorder(new LineBorder(new Color(0,0, 128) , 2));
-		contentPane.add(edietPnl);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("EDIT");
-		lblNewLabel_1_2.setForeground(Color.WHITE);
-		lblNewLabel_1_2.setFont(new Font("Century Schoolbook L", Font.BOLD, 15));
-		edietPnl.add(lblNewLabel_1_2);
-		
+
 		JLabel lblExit = new JLabel("X");
 		lblExit.addMouseListener(new MouseAdapter() {
 			@Override
@@ -170,16 +154,13 @@ public class DashBoard extends JFrame {
 		
 		paneMainContent.add(addinfoPanal);
 		addinfoPanal.setVisible(true);
-		paneMainContent.add(editinfoPan);
 		paneMainContent.add(getInfoPanel);
 		menuClicked(addinfoPanal);
 		menuClicked(addinfoPanal);
 	}
 	public void menuClicked(JPanel panel) {
 		addinfoPanal.setVisible(false);
-		editinfoPan.setVisible(false);
 		getInfoPanel.setVisible(false);
-		
 		panel.setVisible(true);
 	}
 	

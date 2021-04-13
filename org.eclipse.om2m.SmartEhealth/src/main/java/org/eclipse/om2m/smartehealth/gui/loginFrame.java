@@ -141,12 +141,10 @@ public class loginFrame extends JFrame {
 				values = data.parseData(xmlString);
 				AuthenticationController auth = new AuthenticationController();
 				
-				if(auth.checkPassword(txtUsername.getText(), txtPassword.getText(), EncryptAndDecrypt.decrypt(values.get("User Data")))) {
-					
-				
+				if(auth.checkPassword(txtUsername.getText(), txtPassword.getText(), EncryptAndDecrypt.decrypt(values.get("User Data")))) {	
 					String value = auth.setUserNameandRole(txtUsername.getText(), EncryptAndDecrypt.decrypt(values.get("User Data")));
 					DashBoard DOCdashBoard = new DashBoard();
-					phDashBoard phDash = new phDashBoard();
+		
 			    	if (value.equals("Doctor")){
 			    		DOCdashBoard.setVisible(true);
 			    		loginFrame.this.dispose();
@@ -154,8 +152,7 @@ public class loginFrame extends JFrame {
 			    		DOCdashBoard.setVisible(true);
 			    		loginFrame.this.dispose();
 			    	}else if(value.equals("Pharmacist")) {
-			    		phDash.setVisible(true);
-			    		loginFrame.this.dispose();
+			    		
 			    	}else if(value.equals("Nurce")) {
 			    		DOCdashBoard.setVisible(true);
 			    		loginFrame.this.dispose();

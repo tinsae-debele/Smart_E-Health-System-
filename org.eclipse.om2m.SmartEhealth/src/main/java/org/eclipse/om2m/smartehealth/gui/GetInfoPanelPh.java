@@ -63,19 +63,10 @@ public class GetInfoPanelPh extends JPanel {
 				add(txtFirstName);
 				txtFirstName.setText(EncryptAndDecrypt.decrypt(values.get("Patient name")));
 				
-				JLabel fristName = new JLabel("Frist Name :");
+				JLabel fristName = new JLabel("Full Name :");
 				fristName.setBounds(12, 126, 88, 15);
 				add(fristName);
-				/*
-				JLabel lblLastName = new JLabel("LastName :");
-				lblLastName.setBounds(250, 126, 88, 15);
-				add(lblLastName);
-				
-				txtLastName = new JTextField();
-				txtLastName.setColumns(10);
-				txtLastName.setBounds(342, 124, 114, 19);
-				add(txtLastName);
-				*/
+			
 				
 				JLabel lblNewLabel_1 = new JLabel("DOB :");
 				lblNewLabel_1.setBounds(56, 155, 70, 15);
@@ -97,17 +88,6 @@ public class GetInfoPanelPh extends JPanel {
 				txtAddrs.setBounds(342, 153, 114, 19);
 				add(txtAddrs);
 				txtAddrs.setText(EncryptAndDecrypt.decrypt(values.get("Date of birth")));
-				/*
-				JLabel lblNewLabel_2 = new JLabel("Type Of Tretmeant :");
-				lblNewLabel_2.setBounds(12, 217, 145, 15);
-				add(lblNewLabel_2);
-				
-				txtTreat = new JTextField();
-				txtTreat.setColumns(10);
-				txtTreat.addPnladdPnladdPnladdPnlsetBounds(170, 215, 286, 19);
-				add(txtTreat);
-				txtTreat.setText(EncryptAndDecrypt.decrypt(values.get("Type of Treatment")));
-				*/
 				txtPres = new JTextField();
 				txtPres.setColumns(10);
 				txtPres.setBounds(170, 262, 286, 19);

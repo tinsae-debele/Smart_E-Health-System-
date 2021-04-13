@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Automatic-Module-Name: org.eclipse.om2m.SmartEhealth
 Bundle-SymbolicName: org.eclipse.om2m.SmartEhealth
 Bundle-Name: SmartEhealth
-Bundle-Version: 1.1.0.20210406-0017
+Bundle-Version: 1.1.0.20210413-1914
 Bundle-ClassPath: .,jgoodies-common-1.8.0.jar,jgoodies-forms-1.8.0.jar
 Require-Bundle: org.eclipse.om2m.commons;bundle-version="1.1.0",org.ec
  lipse.om2m.SmartSecurity;bundle-version="1.1.0"

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.eclipse.om2m.SmartSecurity' version='1.1.0.20210406-0017'>
+  <artifact classifier='osgi.bundle' id='org.eclipse.om2m.SmartSecurity' version='1.1.0.20210413-1914'>
     <properties size='5'>
-      <property name='artifact.size' value='11573'/>
-      <property name='download.size' value='11573'/>
+      <property name='artifact.size' value='11433'/>
+      <property name='download.size' value='11433'/>
       <property name='maven-groupId' value='org.eclipse.om2m'/>
       <property name='maven-artifactId' value='org.eclipse.om2m.SmartSecurity'/>
       <property name='maven-version' value='1.1.0-SNAPSHOT'/>
